@@ -1,11 +1,30 @@
 package ru.iteco.fmhandroid.ui.data;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class DataHelper {
     public User getValidUser() {
         return new User("login2", "password2");
     }
     public User getNotValidUser() {
         return new User("wrong","wrong2");
+    }
+
+    Date currentDate = new Date();
+    DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
+    DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+    String dateToday = dateFormat.format(currentDate);
+    String timeNow = timeFormat.format(currentDate);
+
+    public String getTimeNow() {
+        return timeNow;
+    }
+
+    public String getDateToday() {
+        return dateToday;
     }
 
     public class User {

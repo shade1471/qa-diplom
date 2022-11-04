@@ -14,9 +14,7 @@ import static org.hamcrest.Matchers.not;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.rule.ActivityTestRule;
 
-import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,7 +31,7 @@ public class LoginTest {
     ViewInteraction loginField = onView(withHint("Логин"));
     ViewInteraction passwordField = onView(withHint("Пароль"));
     ViewInteraction loginButton = onView(withId(R.id.enter_button));
-    ViewInteraction mainLogo = onView(allOf(withId(R.id.trademark_image_view)));
+    public static ViewInteraction mainLogo = onView(allOf(withId(R.id.trademark_image_view)));
     ViewInteraction profileButton = onView(withId(R.id.authorization_image_button));
     ViewInteraction profileMenu = onView(withText("Выйти"));
     ViewInteraction title = onView(withText("Авторизация"));
