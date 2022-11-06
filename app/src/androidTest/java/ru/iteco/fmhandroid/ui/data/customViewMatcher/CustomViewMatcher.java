@@ -13,12 +13,10 @@ public class CustomViewMatcher {
     Matcher<View> hasValueEqualTo(final String content) {
 
         return new TypeSafeMatcher<View>() {
-
             @Override
             public void describeTo(Description description) {
                 description.appendText("Has EditText/TextView the value:  " + content);
             }
-
             @Override
             public boolean matchesSafely(View view) {
                 if (!(view instanceof TextView) && !(view instanceof EditText)) {
@@ -38,5 +36,7 @@ public class CustomViewMatcher {
             }
         };
     }
+
+
 
 }

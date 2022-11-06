@@ -15,7 +15,7 @@ public class DataHelper {
 
     Date currentDate = new Date();
     DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
-    DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+    DateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
     String dateToday = dateFormat.format(currentDate);
     String timeNow = timeFormat.format(currentDate);
 

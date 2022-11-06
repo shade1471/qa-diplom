@@ -12,8 +12,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import static org.hamcrest.CoreMatchers.allOf;
 
-import android.content.Intent;
-
 import androidx.test.espresso.intent.Intents;
 import androidx.test.rule.ActivityTestRule;
 
@@ -28,7 +26,7 @@ import io.qameta.allure.kotlin.Feature;
 import io.qameta.allure.kotlin.Story;
 import ru.iteco.fmhandroid.ui.data.DataHelper;
 import ru.iteco.fmhandroid.ui.data.page.AboutPage;
-import ru.iteco.fmhandroid.ui.data.page.ClaimPage;
+import ru.iteco.fmhandroid.ui.data.page.ClaimMainPage;
 import ru.iteco.fmhandroid.ui.data.page.LoginPage;
 import ru.iteco.fmhandroid.ui.data.page.MainPage;
 import ru.iteco.fmhandroid.ui.data.page.NewsPage;
@@ -64,7 +62,7 @@ public class PagesTest {
     }
 
     @Feature(value = "Набор тест кейсов по проверке страниц через меню навигации приложения (GUI)")
-    @Story("Страница \"Главная\"")
+    @Story("1.2.1 Страница \"Главная\"")
     @Test
     public void shouldCheckMainPage() {
         //Проверка наличия элементов на странице
@@ -74,20 +72,20 @@ public class PagesTest {
     }
 
     @Feature(value = "Набор тест кейсов по проверке страниц через меню навигации приложения (GUI)")
-    @Story("Страница \"Заявки\"")
+    @Story("1.2.2 Страница \"Заявки\"")
     @Test
     public void shouldCheckClaimPage() throws InterruptedException {
         MainPage.generalMenu.perform(click());
         MainPage.generalMenuClaim.perform(click());
         Thread.sleep(2000);
         //Проверка наличия элементов на странице
-        ClaimPage.title.check(matches(isDisplayed()));
-        ClaimPage.filter.check(matches(isDisplayed()));
-        ClaimPage.newClaim.check(matches(isDisplayed()));
+        ClaimMainPage.title.check(matches(isDisplayed()));
+        ClaimMainPage.filter.check(matches(isDisplayed()));
+        ClaimMainPage.newClaim.check(matches(isDisplayed()));
     }
 
     @Feature(value = "Набор тест кейсов по проверке страниц через меню навигации приложения (GUI)")
-    @Story("Страница \"Новости\"")
+    @Story("1.2.3 Страница \"Новости\"")
     @Test
     public void shouldCheckNewsPage() throws InterruptedException {
         MainPage.generalMenu.perform(click());
@@ -100,7 +98,7 @@ public class PagesTest {
     }
 
     @Feature(value = "Набор тест кейсов по проверке страниц через меню навигации приложения (GUI)")
-    @Story("Страница \"О приложении\"")
+    @Story("1.2.4 Страница \"О приложении\"")
     @Test
     public void shouldCheckAboutPage() throws InterruptedException {
         MainPage.generalMenu.perform(click());
@@ -116,7 +114,7 @@ public class PagesTest {
     }
 
     @Feature(value = "Набор тест кейсов по проверке страниц через меню навигации приложения (GUI)")
-    @Story("Страница \"Наша Миссия\"")
+    @Story("1.2.7 Страница \"Наша Миссия\"")
     @Test
     public void shouldCheckOurMissionPage() throws InterruptedException {
         MainPage.ourMissionButton.perform(click());
@@ -127,7 +125,7 @@ public class PagesTest {
     }
 
     @Feature(value = "Набор тест кейсов по проверке страниц через меню навигации приложения (GUI)")
-    @Story("Открытие пользовательского соглашения в разделе \"О приложении\"")
+    @Story("1.2.5 Открытие пользовательского соглашения в разделе \"О приложении\"")
     @Test
     public void shouldCheckTermsUseLink() throws InterruptedException {
         MainPage.generalMenu.perform(click());
@@ -143,7 +141,7 @@ public class PagesTest {
     }
 
     @Feature(value = "Набор тест кейсов по проверке страниц через меню навигации приложения (GUI)")
-    @Story("Открытие политики конфиденциальности в разделе \"О приложении\"")
+    @Story("1.2.6 Открытие политики конфиденциальности в разделе \"О приложении\"")
     @Test
     public void shouldCheckPrivacyPoliceLink() throws InterruptedException {
         MainPage.generalMenu.perform(click());
