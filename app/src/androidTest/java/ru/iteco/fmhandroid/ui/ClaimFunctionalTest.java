@@ -216,5 +216,51 @@ public class ClaimFunctionalTest {
         onView(isRoot()).perform(ViewActions.pressBack());
     }
 
+    @Feature(value = "Набор тест кейсов по проверке функционала события типа Заявка (Функциональное тестирование)")
+    @Story("1.3.6 Смена статуса \"Открытой\" заявки на \"В работе\"")
+    @Test
+    public void shouldChangeStatusClaimOpenToWork() throws InterruptedException {
+        ClaimMainPage.filter.perform(click());
+        ClaimMainPage.inProgressStatus.perform(click());
+        ClaimMainPage.okFilterClaim.perform(click());
+        Thread.sleep(2000);
+        //Открытие первой доступной заявки со статусом "Открыта"
+        onView(withId(R.id.claim_list_recycler_view))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+        Thread.sleep(2000);
+        ClaimPage.statusLabel.check(matches(withText("Открыта")));
+        ClaimPage.executorName.check(matches(withText("НЕ НАЗНАЧЕН")));
+        ClaimPage.statusProcessingButton.perform(click());
+        ClaimPage.statusToWorkButton.perform(click());
+        //Проверка, что статус поменялся на "В работе" и исполнитель на Иванов Д.Д.
+        ClaimPage.statusLabel.check(matches(withText("В работе")));
+        ClaimPage.executorName.check(matches(withText("Иванов Данил Данилович")));
+        Thread.sleep(5000);
+    }
+
+    @Feature(value = "Набор тест кейсов по проверке функционала события типа Заявка (Функциональное тестирование)")
+    @Story("1.3.7 Смена статуса \"В работе\" заявки на \"Выполнена\"")
+    @Test
+    public void shouldChangeStatusClaimWorkToDone() throws InterruptedException {
+        ClaimMainPage.filter.perform(click());
+        ClaimMainPage.openStatus.perform(click());
+        ClaimMainPage.okFilterClaim.perform(click());
+        Thread.sleep(2000);
+        //Открытие первой доступной заявки со статусом "Открыта"
+        onView(withId(R.id.claim_list_recycler_view))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+        Thread.sleep(2000);
+        ClaimPage.statusLabel.check(matches(withText("В работе")));
+        ClaimPage.statusProcessingButton.perform(click());
+        ClaimPage.statusToExecuteButton.perform(click());
+        Thread.sleep(2000);
+        //Ввод комментария
+        ClaimPage.commentField.inRoot(isDialog()).perform(replaceText("Исполнено идеально"));
+        ClaimPage.okButtonMessage.inRoot(isDialog()).perform(click());
+        Thread.sleep(1000);
+        //Проверка, что статус поменялся на "В работе" и исполнитель на Иванов Д.Д.
+        ClaimPage.statusLabel.check(matches(withText("Выполнена")));
+    }
+
 
 }
