@@ -8,7 +8,7 @@ import androidx.test.espresso.ViewInteraction;
 
 import ru.iteco.fmhandroid.R;
 
-public class NewsPage {
+public class NewsMainPage {
     public static ViewInteraction title = onView(withText("Новости"));
     public static ViewInteraction filter = onView(withId(R.id.filter_news_material_button));
     public static ViewInteraction sort = onView(withId(R.id.sort_news_material_button));

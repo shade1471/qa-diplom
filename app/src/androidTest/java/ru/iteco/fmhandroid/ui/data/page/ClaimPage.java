@@ -1,12 +1,16 @@
 package ru.iteco.fmhandroid.ui.data.page;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.replaceText;
+import static androidx.test.espresso.matcher.RootMatchers.isDialog;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import androidx.test.espresso.ViewInteraction;
 
+import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.R;
 
 public class ClaimPage {
@@ -14,6 +18,12 @@ public class ClaimPage {
     public static ViewInteraction statusLabel = onView(withId(R.id.status_label_text_view));
     public static ViewInteraction executorName = onView(withId(R.id.executor_name_text_view));
     public static ViewInteraction addCommentButton = onView(withId(R.id.add_comment_image_button));
+    public static ViewInteraction editCommentButton = onView(withId(R.id.edit_comment_image_button));
+    public static ViewInteraction commentDescription = onView(withId(R.id.comment_description_text_view));
+    public static ViewInteraction commentatorName = onView(withId(R.id.commentator_name_text_view));
+    public static ViewInteraction commentDate = onView(withId(R.id.comment_date_text_view));
+    public static ViewInteraction commentTime = onView(withId(R.id.comment_time_text_view));
+    public static ViewInteraction saveButton = onView(withId(R.id.save_button));
     public static ViewInteraction statusProcessingButton = onView(withId(R.id.status_processing_image_button));
     public static ViewInteraction statusToWorkButton = onView(withText("В работу"));
     public static ViewInteraction statusToResetButton = onView(withText("Сбросить"));
@@ -23,6 +33,20 @@ public class ClaimPage {
     public static ViewInteraction closeClaim = onView(withId(R.id.close_image_button));
     public static ViewInteraction commentField = onView(withHint("Комментарий"));
     public static ViewInteraction okButtonMessage = onView(withText("ОК"));
+
+    @Step("Написание комментария в диалоговом окне")
+    public static void addTextDialogComment(String text) throws InterruptedException {
+        commentField.inRoot(isDialog()).perform(replaceText(text));
+        okButtonMessage.inRoot(isDialog()).perform(click());
+        Thread.sleep(2000);
+    }
+
+    @Step("Написание комментария")
+    public static void addTextComment(String text) throws InterruptedException {
+        commentField.perform(replaceText(text));
+        saveButton.perform(click());
+        Thread.sleep(2000);
+    }
 
 
 }
