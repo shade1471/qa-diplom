@@ -2,6 +2,7 @@ package ru.iteco.fmhandroid.ui.data.page;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -46,12 +47,12 @@ public class NewClaimPage {
         //Создание и заполнение новой заявки
         ClaimMainPage.newClaim.perform(click());
         Thread.sleep(2000);
-        theme.perform(replaceText(finalTheme));
+        theme.perform(replaceText(finalTheme), closeSoftKeyboard());
         executor.perform(click());
         executorIvanov.inRoot(isPopupWindow()).perform(click());
-        date.perform(replaceText(help.getDateToday()));
-        time.perform(replaceText(help.getTimeNow()));
-        description.perform(replaceText("Срочно позвонить! Сроки подходят"));
+        date.perform(replaceText(help.getDateToday()), closeSoftKeyboard());
+        time.perform(replaceText(help.getTimeNow()), closeSoftKeyboard());
+        description.perform(replaceText("Срочно позвонить! Сроки подходят"), closeSoftKeyboard());
         Thread.sleep(2000);
         saveButton.perform(scrollTo(), click());
         Thread.sleep(5000);
@@ -73,10 +74,10 @@ public class NewClaimPage {
         String finalTheme = "NewO " + id;
         //Создание и заполнение новой заявки без исполнителя
         ClaimMainPage.newClaim.perform(click());
-        theme.perform(replaceText(finalTheme));
-        date.perform(replaceText(help.getDateToday()));
-        time.perform(replaceText(help.getTimeNow()));
-        description.perform(replaceText("Кому нибудь срочно позвонить! Сроки подходят!"));
+        theme.perform(replaceText(finalTheme), closeSoftKeyboard());
+        date.perform(replaceText(help.getDateToday()), closeSoftKeyboard());
+        time.perform(replaceText(help.getTimeNow()), closeSoftKeyboard());
+        description.perform(replaceText("Кому нибудь срочно позвонить! Сроки подходят!"), closeSoftKeyboard());
         Thread.sleep(3000);
         saveButton.perform(scrollTo(), click());
         Thread.sleep(5000);

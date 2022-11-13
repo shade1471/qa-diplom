@@ -11,7 +11,9 @@ import static androidx.test.espresso.assertion.ViewAssertions.selectedDescendant
 import static androidx.test.espresso.matcher.RootMatchers.isDialog;
 import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.hasSibling;
+import static androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA;
 import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
+import static androidx.test.espresso.matcher.ViewMatchers.withChild;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
@@ -57,20 +59,20 @@ public class NewNewsPage {
         String newTitle = "Праздник " + id;
         category.perform(click());
         holiday.inRoot(isPopupWindow()).perform(click());
-        title.perform(replaceText(newTitle));
-        date.perform(replaceText(help.getDateToday()));
-        time.perform(replaceText(help.getTimeNow()));
-        description.perform(replaceText("Задорно отметим"),closeSoftKeyboard());
+        title.perform(replaceText(newTitle), closeSoftKeyboard());
+        date.perform(replaceText(help.getDateToday()), closeSoftKeyboard());
+        time.perform(replaceText(help.getTimeNow()), closeSoftKeyboard());
+        description.perform(replaceText("Задорно отметим"), closeSoftKeyboard());
         saveButton.perform(click());
         Thread.sleep(5000);
         ViewInteraction myNews = onView(withId(R.id.news_list_recycler_view))
                 .perform(RecyclerViewActions.actionOnItem(
                         hasDescendant(withText(newTitle)),
                         click()));
-
-
-
-
+        Thread.sleep(4000);
+        //Проверка, что статуст новости АКТИВНА
+        onView(withId(R.id.news_list_recycler_view)).check(matches(hasDescendant(withText(newTitle))))
+                .check(matches(hasDescendant(withText("АКТИВНА"))));
 
     }
 

@@ -2,6 +2,7 @@ package ru.iteco.fmhandroid.ui;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.RootMatchers.isDialog;
@@ -141,7 +142,7 @@ public class ClaimFunctionalTest {
         Thread.sleep(1000);
         ClaimPage.executorName.check(matches(withText("НЕ НАЗНАЧЕН")));
         ClaimPage.editButton.perform(click());
-        NewClaimPage.theme.perform(replaceText(editTheme));
+        NewClaimPage.theme.perform(replaceText(editTheme), closeSoftKeyboard());
         Thread.sleep(2000);
         NewClaimPage.saveButton.perform(click());
         Thread.sleep(2000);

@@ -2,6 +2,7 @@ package ru.iteco.fmhandroid.ui.data.page;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -22,16 +23,16 @@ public class LoginPage {
     @Step("Авторизация под валидным пользователем - Иванов Д.Д.")
     public static void validLogIn() {
         DataHelper help = new DataHelper();
-        LoginPage.loginField.perform(typeText(help.getValidUser().getLogin()));
-        LoginPage.passwordField.perform(typeText(help.getValidUser().getPassword()));
+        LoginPage.loginField.perform(typeText(help.getValidUser().getLogin()), closeSoftKeyboard());
+        LoginPage.passwordField.perform(typeText(help.getValidUser().getPassword()), closeSoftKeyboard());
         LoginPage.loginButton.perform(click());
     }
 
     @Step("Авторизация под НЕвалидной учеткой")
     public static void notValidLogIn() {
         DataHelper help = new DataHelper();
-        LoginPage.loginField.perform(typeText(help.getNotValidUser().getLogin()));
-        LoginPage.passwordField.perform(typeText(help.getNotValidUser().getPassword()));
+        LoginPage.loginField.perform(typeText(help.getNotValidUser().getLogin()), closeSoftKeyboard());
+        LoginPage.passwordField.perform(typeText(help.getNotValidUser().getPassword()), closeSoftKeyboard());
         LoginPage.loginButton.perform(click());
     }
 

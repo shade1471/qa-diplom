@@ -2,6 +2,7 @@ package ru.iteco.fmhandroid.ui.data.page;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.matcher.RootMatchers.isDialog;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
@@ -36,14 +37,14 @@ public class ClaimPage {
 
     @Step("Написание комментария в диалоговом окне")
     public static void addTextDialogComment(String text) throws InterruptedException {
-        commentField.inRoot(isDialog()).perform(replaceText(text));
+        commentField.inRoot(isDialog()).perform(replaceText(text), closeSoftKeyboard());
         okButtonMessage.inRoot(isDialog()).perform(click());
         Thread.sleep(2000);
     }
 
     @Step("Написание комментария")
     public static void addTextComment(String text) throws InterruptedException {
-        commentField.perform(replaceText(text));
+        commentField.perform(replaceText(text), closeSoftKeyboard());
         saveButton.perform(click());
         Thread.sleep(2000);
     }
