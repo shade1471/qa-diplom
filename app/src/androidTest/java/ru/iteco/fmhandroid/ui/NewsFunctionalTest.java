@@ -1,7 +1,16 @@
 package ru.iteco.fmhandroid.ui;
 
+import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.RootMatchers.isPlatformPopup;
+import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
+import static androidx.test.espresso.matcher.ViewMatchers.isNotChecked;
+import static androidx.test.espresso.matcher.ViewMatchers.isNotClickable;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+
+import static org.hamcrest.core.IsNot.not;
 
 import androidx.test.espresso.Root;
 import androidx.test.rule.ActivityTestRule;
@@ -11,8 +20,11 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.util.UUID;
+
 import io.qameta.allure.kotlin.Feature;
 import io.qameta.allure.kotlin.Story;
+import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.data.DataHelper;
 import ru.iteco.fmhandroid.ui.data.page.LoginPage;
 import ru.iteco.fmhandroid.ui.data.page.MainPage;
@@ -48,9 +60,50 @@ public class NewsFunctionalTest {
     @Story("1.4.1 Создание новой новости (Happy Path)")
     @Test
     public void shouldAddNews() throws InterruptedException {
+        String id = UUID.randomUUID().toString();
+        String newTitle = "Праздник " + id;
         NewsMainPage.editNews.perform(click());
         NewsMainPage.addNews.perform(click());
-        NewNewsPage.addNews();
-
+        NewNewsPage.addNews(newTitle);
     }
+
+    @Feature(value = "Набор тест кейсов по проверке функционала события типа Новости (Функциональное тестирование)")
+    @Story("1.4.2 Создание новой Новости с пустыми полями")
+    @Test
+    public void shouldAddEmptyNews() {
+        NewsMainPage.editNews.perform(click());
+        NewsMainPage.addNews.perform(click());
+        NewNewsPage.saveButton.perform(click());
+        //Проверка предупреждений по пустым полям
+        NewNewsPage.categoryParentLayout.check(matches(hasDescendant(withId(R.id.text_input_end_icon))))
+                .check(matches(isNotClickable()));
+        NewNewsPage.titleParentLayout.check(matches(hasDescendant(withId(R.id.text_input_end_icon))))
+                .check(matches(isNotClickable()));
+        NewNewsPage.dateParentLayout.check(matches(hasDescendant(withId(R.id.text_input_end_icon))))
+                .check(matches(isNotClickable()));
+        NewNewsPage.timeParentLayout.check(matches(hasDescendant(withId(R.id.text_input_end_icon))))
+                .check(matches(isNotClickable()));
+        NewNewsPage.descriptionParentLayout.check(matches(hasDescendant(withId(R.id.text_input_end_icon))))
+                .check(matches(isNotClickable()));
+    }
+
+    @Feature(value = "Набор тест кейсов по проверке функционала события типа Новости (Функциональное тестирование)")
+    @Story("1.4.3 Удаление существующей новости")
+    @Test
+    public void shouldDeleteNews() throws InterruptedException {
+        String id = UUID.randomUUID().toString();
+        String newTitle = "Праздник " + id;
+        NewsMainPage.editNews.perform(click());
+        NewsMainPage.addNews.perform(click());
+        //Создание новости
+        NewNewsPage.addNews(newTitle);
+        //Удаление новосозданной новости
+        NewNewsPage.deleteNews(newTitle);
+
+        //String existNews = "Праздник c3ac4284-995f-4dd2-86dc-fd681922fc28";
+        //Проверка, что новость с заданной темой отсутствует
+        onView(withId(R.id.news_list_recycler_view)).check(matches(not(hasDescendant(withText(newTitle)))));
+    }
+
+
 }
