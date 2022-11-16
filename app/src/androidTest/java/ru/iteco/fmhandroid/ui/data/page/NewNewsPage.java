@@ -30,6 +30,7 @@ import org.hamcrest.Matcher;
 
 import java.util.UUID;
 
+import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.data.DataHelper;
 
@@ -64,6 +65,7 @@ public class NewNewsPage {
     public static ViewInteraction okButtonMessage = onView(withText("OK"));
 
 
+    @Step("Создание новости")
     public static void addNews(String newTitle) throws InterruptedException {
         DataHelper help = new DataHelper();
 
@@ -80,12 +82,10 @@ public class NewNewsPage {
                         hasDescendant(withText(newTitle)),
                         click()));
         Thread.sleep(4000);
-        //Проверка, что статуст новости АКТИВНА
-        onView(withId(R.id.news_list_recycler_view)).check(matches(hasDescendant(withText(newTitle))))
-                .check(matches(hasDescendant(withText("АКТИВНА"))));
 
     }
 
+    @Step("Удаление новости")
     public static void deleteNews(String newTitle) throws InterruptedException {
         //Удаление Новости
         onView(withId(R.id.news_list_recycler_view))
@@ -93,7 +93,35 @@ public class NewNewsPage {
                         hasDescendant(withText(newTitle)),
                         clickChildViewWithId(R.id.delete_news_item_image_view)));
         okButtonMessage.inRoot(isDialog()).perform(click());
-        Thread.sleep(4000);
+        Thread.sleep(2000);
+    }
+
+    @Step("Редактирование новости: темы и описание")
+    public static void editNews(String oldTitle, String newTitle, String newDescription) throws InterruptedException {
+        //Поиск новости по заголовку и редактирование
+        onView(withId(R.id.news_list_recycler_view))
+                .perform(RecyclerViewActions.actionOnItem(
+                        hasDescendant(withText(oldTitle)),
+                        clickChildViewWithId(R.id.edit_news_item_image_view)));
+        //Правка темы и описания
+        title.perform(replaceText(newTitle), closeSoftKeyboard());
+        description.perform(replaceText(newDescription), closeSoftKeyboard());
+        Thread.sleep(2000);
+        saveButton.perform(click());
+        Thread.sleep(5000);
+    }
+
+    @Step("Редактирование новости: сменить статус")
+    public static void changeStatus(String title) throws InterruptedException {
+        //Поиск новости по заголовку для дальнейшего редактирование
+        onView(withId(R.id.news_list_recycler_view))
+                .perform(RecyclerViewActions.actionOnItem(
+                        hasDescendant(withText(title)),
+                        clickChildViewWithId(R.id.edit_news_item_image_view)));
+        switcher.perform(click());
+        Thread.sleep(2000);
+        saveButton.perform(click());
+        Thread.sleep(5000);
     }
 
 

@@ -131,7 +131,7 @@ public class ClaimFunctionalTest {
             onView(isRoot()).perform(ViewActions.pressBack());
         }
     }
-
+    //todo Создать метод для редактирования заявки и описать как шаг для allure
     @Feature(value = "Набор тест кейсов по проверке функционала события типа Заявка (Функциональное тестирование)")
     @Story("1.3.5 Редактирование \"Открытой\" заявки")
     @Test
