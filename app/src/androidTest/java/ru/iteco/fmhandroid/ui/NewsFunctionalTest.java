@@ -5,11 +5,9 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.RootMatchers.isPlatformPopup;
 import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
-import static androidx.test.espresso.matcher.ViewMatchers.isNotChecked;
 import static androidx.test.espresso.matcher.ViewMatchers.isNotClickable;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-
 import static org.hamcrest.core.IsNot.not;
 
 import androidx.test.espresso.Root;
@@ -28,17 +26,10 @@ import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.data.DataHelper;
 import ru.iteco.fmhandroid.ui.data.page.LoginPage;
 import ru.iteco.fmhandroid.ui.data.page.MainPage;
-import ru.iteco.fmhandroid.ui.data.page.NewClaimPage;
 import ru.iteco.fmhandroid.ui.data.page.NewNewsPage;
 import ru.iteco.fmhandroid.ui.data.page.NewsMainPage;
 
 public class NewsFunctionalTest {
-    DataHelper help = new DataHelper();
-
-    // Выбор из PopUpMenu
-    public static Matcher<Root> isPopupWindow() {
-        return isPlatformPopup();
-    }
 
     @Rule
     public ActivityTestRule<AppActivity> activityTestRule =
@@ -93,16 +84,16 @@ public class NewsFunctionalTest {
     @Test
     public void shouldDeleteNews() throws InterruptedException {
         String id = UUID.randomUUID().toString();
-        String newTitle = "Праздник " + id;
+        String title = "Праздник " + id;
         NewsMainPage.clickEditAndPlus();
         //Создание новости
-        NewNewsPage.addNews(newTitle);
+        NewNewsPage.addNews(title);
         //Удаление новосозданной новости
-        NewNewsPage.deleteNews(newTitle);
+        NewNewsPage.deleteNews(title);
 
         //String existNews = "Праздник c3ac4284-995f-4dd2-86dc-fd681922fc28";
         //Проверка, что новость с заданной темой отсутствует
-        onView(withId(R.id.news_list_recycler_view)).check(matches(not(hasDescendant(withText(newTitle)))));
+        onView(withId(R.id.news_list_recycler_view)).check(matches(not(hasDescendant(withText(title)))));
     }
 
     @Feature(value = "Набор тест кейсов по проверке функционала события типа Новости (Функциональное тестирование)")
@@ -116,7 +107,7 @@ public class NewsFunctionalTest {
         String newDescription = "Поправим и отметим";
         NewsMainPage.clickEditAndPlus();
         //Создание новости
-        NewNewsPage.addNews(newTitle);
+        NewNewsPage.addNews(title);
         //Редактирование новосозданной новости
         NewNewsPage.editNews(title, newTitle, newDescription);
         //Проверка, что новость с отредактированной темой и описанием присутсвует
@@ -139,18 +130,22 @@ public class NewsFunctionalTest {
         onView(withId(R.id.news_list_recycler_view)).check(matches(hasDescendant(withText(title))))
                 .check(matches(hasDescendant(withText("НЕ АКТИВНА"))));
     }
-//todo Дописать кейс!
+
     @Feature(value = "Набор тест кейсов по проверке функционала события типа Новости (Функциональное тестирование)")
     @Story("1.4.6 Функционал по дате публикации новости")
     @Test
     public void shouldAddNewsForFutureTime() throws InterruptedException {
         String id = UUID.randomUUID().toString();
-        String title = "Праздник " + id;
+        String title = "Будущее " + id;
         NewsMainPage.clickEditAndPlus();
-        //Создание новости
-        NewNewsPage.addNews(title);
-
+        //Создание новости +2 минуты к текущему времени
+        NewNewsPage.addNews(title, 2);
+        //проверка, что Новость видна через редактирование новостей
+        onView(withId(R.id.news_list_recycler_view)).check(matches(hasDescendant(withText(title))))
+                .check(matches(hasDescendant(withText("АКТИВНА"))));
+        //Проверка, что новость с заданной темой и  большим временем публикации отсутствует в обычном режиме просмотра
+        MainPage.openNewsPage();
+        onView(withId(R.id.news_list_recycler_view)).check(matches(not(hasDescendant(withText(title)))));
     }
-
 
 }

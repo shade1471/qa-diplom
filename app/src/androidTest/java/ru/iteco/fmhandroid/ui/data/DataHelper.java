@@ -1,7 +1,11 @@
 package ru.iteco.fmhandroid.ui.data;
 
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 
@@ -9,8 +13,9 @@ public class DataHelper {
     public User getValidUser() {
         return new User("login2", "password2");
     }
+
     public User getNotValidUser() {
-        return new User("wrong","wrong2");
+        return new User("wrong", "wrong2");
     }
 
     Date currentDate = new Date();
@@ -21,6 +26,11 @@ public class DataHelper {
 
     public String getTimeNow() {
         return timeNow;
+    }
+
+    public String addMinToCurrentTime(int min) {
+        DateTime shiftTime = new DateTime().plusMinutes(min);
+        return shiftTime.toString("HH:mm");
     }
 
     public String getDateToday() {
@@ -35,9 +45,11 @@ public class DataHelper {
             this.login = login;
             this.password = password;
         }
+
         public String getLogin() {
             return login;
         }
+
         public String getPassword() {
             return password;
         }

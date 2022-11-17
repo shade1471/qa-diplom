@@ -106,4 +106,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.4.0'
     androidTestImplementation 'io.qameta.allure:allure-kotlin-android:2.4.0'
+    implementation 'joda-time:joda-time:2.12.1'
 }

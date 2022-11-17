@@ -82,17 +82,35 @@ public class NewNewsPage {
                         hasDescendant(withText(newTitle)),
                         click()));
         Thread.sleep(4000);
+    }
 
+    @Step("Создание новости")
+    public static void addNews(String newTitle, int minuteShift) throws InterruptedException {
+        DataHelper help = new DataHelper();
+
+        category.perform(click());
+        holiday.inRoot(isPopupWindow()).perform(click());
+        title.perform(replaceText(newTitle), closeSoftKeyboard());
+        date.perform(replaceText(help.getDateToday()), closeSoftKeyboard());
+        time.perform(replaceText(help.addMinToCurrentTime(minuteShift)), closeSoftKeyboard());
+        description.perform(replaceText("Задорно отметим"), closeSoftKeyboard());
+        saveButton.perform(click());
+        Thread.sleep(5000);
+//        ViewInteraction myNews = onView(withId(R.id.news_list_recycler_view))
+//                .perform(RecyclerViewActions.actionOnItem(
+//                        hasDescendant(withText(newTitle)),
+//                        click()));
+//        Thread.sleep(4000);
     }
 
     @Step("Удаление новости")
-    public static void deleteNews(String newTitle) throws InterruptedException {
+    public static void deleteNews(String title) throws InterruptedException {
         //Удаление Новости
         onView(withId(R.id.news_list_recycler_view))
                 .perform(RecyclerViewActions.actionOnItem(
-                        hasDescendant(withText(newTitle)),
+                        hasDescendant(withText(title)),
                         clickChildViewWithId(R.id.delete_news_item_image_view)));
-        okButtonMessage.inRoot(isDialog()).perform(click());
+        okButtonMessage.perform(click());
         Thread.sleep(2000);
     }
 
