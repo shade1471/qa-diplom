@@ -38,12 +38,12 @@ public class NewsFunctionalTest {
     @Before
     public void setUp() throws InterruptedException {
         try {
-            Thread.sleep(5000);
+            Thread.sleep(7000);
             LoginPage.validLogIn();
             Thread.sleep(7000);
         } catch (Exception e) {
             MainPage.openNewsPage();
-            Thread.sleep(4000);
+            Thread.sleep(7000);
         }
     }
 

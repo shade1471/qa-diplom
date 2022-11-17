@@ -110,6 +110,7 @@ public class NewNewsPage {
                 .perform(RecyclerViewActions.actionOnItem(
                         hasDescendant(withText(title)),
                         clickChildViewWithId(R.id.delete_news_item_image_view)));
+        Thread.sleep(5000);
         okButtonMessage.perform(click());
         Thread.sleep(2000);
     }
@@ -136,8 +137,9 @@ public class NewNewsPage {
                 .perform(RecyclerViewActions.actionOnItem(
                         hasDescendant(withText(title)),
                         clickChildViewWithId(R.id.edit_news_item_image_view)));
+        Thread.sleep(4000);
         switcher.perform(click());
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         saveButton.perform(click());
         Thread.sleep(5000);
     }
