@@ -16,6 +16,7 @@ import org.junit.runner.RunWith;
 
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Feature;
+import io.qameta.allure.kotlin.Step;
 import io.qameta.allure.kotlin.Story;
 import ru.iteco.fmhandroid.ui.data.DataHelper;
 import ru.iteco.fmhandroid.ui.data.page.LoginPage;
