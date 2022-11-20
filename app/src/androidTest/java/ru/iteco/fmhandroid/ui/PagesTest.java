@@ -42,7 +42,7 @@ public class PagesTest {
         try {
             Thread.sleep(5000);
             LoginPage.validLogIn();
-            Thread.sleep(4000);
+            Thread.sleep(10000);
         } catch (Exception e) {
             return;
         }

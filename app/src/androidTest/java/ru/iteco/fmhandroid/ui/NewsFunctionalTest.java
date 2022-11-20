@@ -40,7 +40,8 @@ public class NewsFunctionalTest {
         try {
             Thread.sleep(7000);
             LoginPage.validLogIn();
-            Thread.sleep(7000);
+            Thread.sleep(10000);
+            MainPage.openNewsPage();
         } catch (Exception e) {
             MainPage.openNewsPage();
             Thread.sleep(7000);

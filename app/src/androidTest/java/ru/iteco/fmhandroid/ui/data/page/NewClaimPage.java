@@ -5,7 +5,6 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -62,9 +61,7 @@ public class NewClaimPage {
                 .perform(RecyclerViewActions.actionOnItem(
                         hasDescendant(withText(finalTheme)),
                         click()));
-        // Проверка статуса заявки при заполненном исполнителе
         Thread.sleep(2000);
-        ClaimPage.statusLabel.check(matches(withText("В работе")));
     }
 
     @Step("Создание новой заявки без исполнителя")
@@ -89,7 +86,6 @@ public class NewClaimPage {
                         click()));
         // Проверка статуса заявки при заполненном исполнителе
         Thread.sleep(1000);
-        ClaimPage.statusLabel.check(matches(withText("Открыта")));
     }
 
 }

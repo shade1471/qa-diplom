@@ -56,10 +56,11 @@ public class ClaimFunctionalTest {
         try {
             Thread.sleep(5000);
             LoginPage.validLogIn();
-            Thread.sleep(7000);
+            Thread.sleep(10000);
+            MainPage.openClaimPage();
         } catch (Exception e) {
             MainPage.openClaimPage();
-            Thread.sleep(4000);
+            Thread.sleep(7000);
         }
     }
 
@@ -95,6 +96,7 @@ public class ClaimFunctionalTest {
     @Test
     public void shouldCreateNewClaimWithoutExecutor() throws InterruptedException {
         NewClaimPage.addNewOpenClaim();
+        ClaimPage.statusLabel.check(matches(withText("Открыта")));
     }
 
     @Feature(value = "Набор тест кейсов по проверке функционала события типа Заявка (Функциональное тестирование)")
@@ -124,14 +126,15 @@ public class ClaimFunctionalTest {
         for (int i = 0; i < 5; i++) {
             onView(withId(R.id.claim_list_recycler_view))
                     .perform(RecyclerViewActions.actionOnItemAtPosition(i, click()));
-            Thread.sleep(1000);
+            Thread.sleep(3000);
             //Проверка статуса
             ClaimPage.statusLabel.check(matches(withText("В работе")));
             //Нажатие Системной кнопки Back
             onView(isRoot()).perform(ViewActions.pressBack());
+            Thread.sleep(3000);
         }
     }
-    //todo Создать метод для редактирования заявки и описать как шаг для allure
+
     @Feature(value = "Набор тест кейсов по проверке функционала события типа Заявка (Функциональное тестирование)")
     @Story("1.3.5 Редактирование \"Открытой\" заявки")
     @Test
@@ -157,6 +160,7 @@ public class ClaimFunctionalTest {
     @Test
     public void shouldChangeStatusClaimOpenToWork() throws InterruptedException {
         NewClaimPage.addNewOpenClaim();
+        ClaimPage.statusLabel.check(matches(withText("Открыта")));
         ClaimPage.executorName.check(matches(withText("НЕ НАЗНАЧЕН")));
         ClaimPage.statusProcessingButton.perform(click());
         ClaimPage.statusToWorkButton.perform(click());
@@ -171,6 +175,8 @@ public class ClaimFunctionalTest {
     @Test
     public void shouldChangeStatusClaimWorkToDone() throws InterruptedException {
         NewClaimPage.addNewClaimAndOpenIt();
+        // Проверка статуса заявки при заполненном исполнителе
+        ClaimPage.statusLabel.check(matches(withText("В работе")));
         ClaimPage.statusProcessingButton.perform(click());
         ClaimPage.statusToExecuteButton.perform(click());
         Thread.sleep(2000);

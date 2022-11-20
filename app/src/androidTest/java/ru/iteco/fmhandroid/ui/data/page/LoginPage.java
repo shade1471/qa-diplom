@@ -21,10 +21,11 @@ public class LoginPage {
     public static ViewInteraction title = onView(withText("Авторизация"));
 
     @Step("Авторизация под валидным пользователем - Иванов Д.Д.")
-    public static void validLogIn() {
+    public static void validLogIn() throws InterruptedException {
         DataHelper help = new DataHelper();
         LoginPage.loginField.perform(typeText(help.getValidUser().getLogin()), closeSoftKeyboard());
         LoginPage.passwordField.perform(typeText(help.getValidUser().getPassword()), closeSoftKeyboard());
+        Thread.sleep(3000);
         LoginPage.loginButton.perform(click());
     }
 
