@@ -5,7 +5,7 @@
  - [Чек лист](/docs/Check.xlsx)
  - [План тестирования](/docs/Plan.md)
  - [Отчет по тестированию](/docs/Report.md)
- - [Сводный отчет о работе](/docs/Symmary.md)
+ - [Сводный отчет о работе](/docs/Result.md)
  - [Allure отчет](/allure-results.zip)
  - [Баг репорты](https://github.com/shade1471/qa-diplom/issues)
 
