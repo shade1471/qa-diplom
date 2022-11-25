@@ -6,7 +6,7 @@
  - [План тестирования](/docs/Plan.md)
  - [Отчет по тестированию](/docs/Report.md)
  - [Сводный отчет о работе](/docs/Symmary.md)
- - [Allure отчет](/allure-results)
+ - [Allure отчет](/allure-results.zip)
  - [Баг репорты](https://github.com/shade1471/qa-diplom/issues)
 
 *Требование к устройству на котором будет произведен запуск автотестов*: Русская локаль устройства, на ПК установлен Android SDK
@@ -38,7 +38,7 @@
 
 Либо воспользоваться коммандой ``adb pull /data/data/ru.iteco.fmhandroid/files/allure-results``
 
-В проекте Allure отчет о тестировании доступен в каталоге [allure-results](/allure-results)
+В проекте Allure отчет о тестировании доступен в каталоге [allure-results](/allure-results.zip)
 
 В каталоге allure-results, при условии установленного на ПК Allure, выполнить комманду ``allure serve ./`` для открытия отчета в браузере.
 
