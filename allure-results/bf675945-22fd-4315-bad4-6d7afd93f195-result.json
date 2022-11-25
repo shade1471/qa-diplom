@@ -1,0 +1,61 @@
+{
+    "name": "shouldLoginByNotValidUser",
+    "start": 1669303347840,
+    "stop": 1669303360086,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "bf675945-22fd-4315-bad4-6d7afd93f195",
+    "historyId": "856512f02095da89307dbdfc1a9922e8",
+    "fullName": "ru.iteco.fmhandroid.ui.LoginTest.shouldLoginByNotValidUser",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.LoginTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "shouldLoginByNotValidUser"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.LoginTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: io.qameta.allure.android.runners.AllureAndroidJUnitRunner(1827)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "feature",
+            "value": "Набор тест кейсов по LogIn и LogOut из учетной записи"
+        },
+        {
+            "name": "story",
+            "value": "1.1.3 Авторизация в приложение под невалидными учетными данными"
+        }
+    ]
+}

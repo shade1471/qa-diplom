@@ -1,0 +1,61 @@
+{
+    "name": "shouldCreateNewClaimWithExecutor",
+    "start": 1669303265592,
+    "stop": 1669303293829,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "b1fb2266-a46e-4481-a311-da3ced42a707",
+    "historyId": "6278a4a10f0fa87b1baf0559c0929e2",
+    "fullName": "ru.iteco.fmhandroid.ui.ClaimFunctionalTest.shouldCreateNewClaimWithExecutor",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.ClaimFunctionalTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "shouldCreateNewClaimWithExecutor"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.ClaimFunctionalTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: io.qameta.allure.android.runners.AllureAndroidJUnitRunner(1825)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "feature",
+            "value": "Набор тест кейсов по проверке функционала события типа Заявка (Функциональное тестирование)"
+        },
+        {
+            "name": "story",
+            "value": "1.3.1 Создание новой заполненной заявки c выбором исполнителя (Happy Path)"
+        }
+    ]
+}

@@ -1,0 +1,61 @@
+{
+    "name": "shouldEditNews",
+    "start": 1669303545683,
+    "stop": 1669303581767,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "65f5a820-0dfd-466e-99af-f8ee663a8ae4",
+    "historyId": "d0b9c2c8fb3b167030a5a9e77a8173c0",
+    "fullName": "ru.iteco.fmhandroid.ui.NewsFunctionalTest.shouldEditNews",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.NewsFunctionalTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "shouldEditNews"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.NewsFunctionalTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: io.qameta.allure.android.runners.AllureAndroidJUnitRunner(1832)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "feature",
+            "value": "Набор тест кейсов по проверке функционала события типа Новости (Функциональное тестирование)"
+        },
+        {
+            "name": "story",
+            "value": "1.4.4 Редактирование существующей новости"
+        }
+    ]
+}

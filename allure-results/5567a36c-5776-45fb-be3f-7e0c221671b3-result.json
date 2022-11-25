@@ -1,0 +1,61 @@
+{
+    "name": "shouldAddNewsForFutureTime",
+    "start": 1669303427413,
+    "stop": 1669303462775,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "5567a36c-5776-45fb-be3f-7e0c221671b3",
+    "historyId": "4f78eefebedab6b7d10b1d2c68d008dd",
+    "fullName": "ru.iteco.fmhandroid.ui.NewsFunctionalTest.shouldAddNewsForFutureTime",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.NewsFunctionalTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "shouldAddNewsForFutureTime"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.NewsFunctionalTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: io.qameta.allure.android.runners.AllureAndroidJUnitRunner(1832)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "feature",
+            "value": "Набор тест кейсов по проверке функционала события типа Новости (Функциональное тестирование)"
+        },
+        {
+            "name": "story",
+            "value": "1.4.6 Функционал по дате публикации новости"
+        }
+    ]
+}

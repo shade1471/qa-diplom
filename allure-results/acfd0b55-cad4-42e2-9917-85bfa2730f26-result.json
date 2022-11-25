@@ -1,0 +1,61 @@
+{
+    "name": "shouldCreateEmptyClaim",
+    "start": 1669303293841,
+    "stop": 1669303309719,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "acfd0b55-cad4-42e2-9917-85bfa2730f26",
+    "historyId": "395c6f15e5601e1a760028b28904a793",
+    "fullName": "ru.iteco.fmhandroid.ui.ClaimFunctionalTest.shouldCreateEmptyClaim",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.ClaimFunctionalTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "shouldCreateEmptyClaim"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.ClaimFunctionalTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: io.qameta.allure.android.runners.AllureAndroidJUnitRunner(1825)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "feature",
+            "value": "Набор тест кейсов по проверке функционала события типа Заявка (Функциональное тестирование)"
+        },
+        {
+            "name": "story",
+            "value": "1.3.2 Попытка создания новой заявки с пустыми полями"
+        }
+    ]
+}

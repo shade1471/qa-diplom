@@ -1,0 +1,61 @@
+{
+    "name": "shouldCheckMainPage",
+    "start": 1669303777619,
+    "stop": 1669303800591,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "a2ae8d90-46d3-46f9-a275-9f07f9aedba8",
+    "historyId": "745b1eb319ab8a1a091c0e9941fca4c5",
+    "fullName": "ru.iteco.fmhandroid.ui.PagesTest.shouldCheckMainPage",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.PagesTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "shouldCheckMainPage"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.PagesTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: io.qameta.allure.android.runners.AllureAndroidJUnitRunner(1838)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "feature",
+            "value": "Набор тест кейсов по проверке страниц через меню навигации приложения (GUI)"
+        },
+        {
+            "name": "story",
+            "value": "1.2.1 Страница \"Главная\""
+        }
+    ]
+}

@@ -1,0 +1,61 @@
+{
+    "name": "shouldChangeNewsStatus",
+    "start": 1669303581774,
+    "stop": 1669303621180,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "f5d44e06-1846-47ae-ba30-7433e4a16016",
+    "historyId": "3dd184b9959ed2617cceba195b173d6a",
+    "fullName": "ru.iteco.fmhandroid.ui.NewsFunctionalTest.shouldChangeNewsStatus",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.NewsFunctionalTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "shouldChangeNewsStatus"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.NewsFunctionalTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: io.qameta.allure.android.runners.AllureAndroidJUnitRunner(1832)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "feature",
+            "value": "Набор тест кейсов по проверке функционала события типа Новости (Функциональное тестирование)"
+        },
+        {
+            "name": "story",
+            "value": "1.4.5 Смена статуса у новости с \"Активна\" на \"Не активна\""
+        }
+    ]
+}

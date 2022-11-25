@@ -1,0 +1,61 @@
+{
+    "name": "shouldAddNews",
+    "start": 1669303462812,
+    "stop": 1669303491480,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "f7787ec5-eea8-448f-91f5-ce383fb9c53d",
+    "historyId": "261c3aebb59bfab993352eab88729919",
+    "fullName": "ru.iteco.fmhandroid.ui.NewsFunctionalTest.shouldAddNews",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.NewsFunctionalTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "shouldAddNews"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.NewsFunctionalTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: io.qameta.allure.android.runners.AllureAndroidJUnitRunner(1832)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "feature",
+            "value": "Набор тест кейсов по проверке функционала события типа Новости (Функциональное тестирование)"
+        },
+        {
+            "name": "story",
+            "value": "1.4.1 Создание новой новости (Happy Path)"
+        }
+    ]
+}

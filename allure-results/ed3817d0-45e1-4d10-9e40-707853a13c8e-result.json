@@ -1,0 +1,61 @@
+{
+    "name": "shouldChangeStatusClaimOpenToWork",
+    "start": 1669303175571,
+    "stop": 1669303203549,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "ed3817d0-45e1-4d10-9e40-707853a13c8e",
+    "historyId": "a399a6feec8a5f1f7005f1741d8792b6",
+    "fullName": "ru.iteco.fmhandroid.ui.ClaimFunctionalTest.shouldChangeStatusClaimOpenToWork",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.ClaimFunctionalTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "shouldChangeStatusClaimOpenToWork"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.ClaimFunctionalTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: io.qameta.allure.android.runners.AllureAndroidJUnitRunner(1825)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "feature",
+            "value": "Набор тест кейсов по проверке функционала события типа Заявка (Функциональное тестирование)"
+        },
+        {
+            "name": "story",
+            "value": "1.3.6 Смена статуса \"Открытой\" заявки на \"В работе\""
+        }
+    ]
+}

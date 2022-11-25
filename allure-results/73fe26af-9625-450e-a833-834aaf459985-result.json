@@ -1,0 +1,61 @@
+{
+    "name": "shouldEditOpenClaim",
+    "start": 1669303234400,
+    "stop": 1669303265582,
+    "stage": "finished",
+    "description": null,
+    "descriptionHtml": null,
+    "status": "passed",
+    "statusDetails": null,
+    "steps": [
+    ],
+    "attachments": [
+    ],
+    "parameters": [
+    ],
+    "uuid": "73fe26af-9625-450e-a833-834aaf459985",
+    "historyId": "20382d0f2b717c574c22cf31cf896a50",
+    "fullName": "ru.iteco.fmhandroid.ui.ClaimFunctionalTest.shouldEditOpenClaim",
+    "labels": [
+        {
+            "name": "package",
+            "value": "ru.iteco.fmhandroid.ui"
+        },
+        {
+            "name": "testClass",
+            "value": "ru.iteco.fmhandroid.ui.ClaimFunctionalTest"
+        },
+        {
+            "name": "testMethod",
+            "value": "shouldEditOpenClaim"
+        },
+        {
+            "name": "suite",
+            "value": "ru.iteco.fmhandroid.ui.ClaimFunctionalTest"
+        },
+        {
+            "name": "host",
+            "value": "localhost"
+        },
+        {
+            "name": "thread",
+            "value": "Instr: io.qameta.allure.android.runners.AllureAndroidJUnitRunner(1825)"
+        },
+        {
+            "name": "framework",
+            "value": "junit4"
+        },
+        {
+            "name": "language",
+            "value": "kotlin"
+        },
+        {
+            "name": "feature",
+            "value": "Набор тест кейсов по проверке функционала события типа Заявка (Функциональное тестирование)"
+        },
+        {
+            "name": "story",
+            "value": "1.3.5 Редактирование \"Открытой\" заявки"
+        }
+    ]
+}
