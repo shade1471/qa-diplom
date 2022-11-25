@@ -38,9 +38,9 @@
 
 Либо воспользоваться коммандой ``adb pull /data/data/ru.iteco.fmhandroid/files/allure-results``
 
-В проекте Allure отчет о тестировании доступен в каталоге [allure-results](/allure-results.zip)
+В проекте Allure отчет о тестировании доступен в архиве [allure-results](/allure-results.zip)
 
-В каталоге allure-results, при условии установленного на ПК Allure, выполнить комманду ``allure serve ./`` для открытия отчета в браузере.
+В каталоге allure-results после извлечения из архива, при условии установленного на ПК Allure, выполнить комманду ``allure serve ./`` для открытия отчета в браузере.
 
 2.2 Вариант запуска через CLI с помощью gradlew
 
