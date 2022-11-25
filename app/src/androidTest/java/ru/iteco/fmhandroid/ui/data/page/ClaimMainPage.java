@@ -23,6 +23,7 @@ public class ClaimMainPage {
     @Step("Фильтрация заявки со статусом \"Открыта\"")
     public static void filteringByOpen() throws InterruptedException {
         filter.perform(click());
+        Thread.sleep(1000);
         inProgressStatus.perform(click());
         okFilterClaim.perform(click());
         Thread.sleep(2000);

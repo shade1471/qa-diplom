@@ -108,12 +108,13 @@ public class ClaimFunctionalTest {
         for (int i = 0; i < 5; i++) {
             onView(withId(R.id.claim_list_recycler_view))
                     .perform(RecyclerViewActions.actionOnItemAtPosition(i, click()));
-            Thread.sleep(2000);
+            Thread.sleep(3000);
             //Проверка статуса и что исполнитель не назначен
             ClaimPage.statusLabel.check(matches(withText("Открыта")));
             ClaimPage.executorName.check(matches(withText("НЕ НАЗНАЧЕН")));
             //Нажатие Системной кнопки Back
             onView(isRoot()).perform(ViewActions.pressBack());
+            Thread.sleep(3000);
         }
     }
 
