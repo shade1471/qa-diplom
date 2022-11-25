@@ -44,7 +44,7 @@
 
 2.2 Вариант запуска через CLI с помощью gradlew
 
-В каталоге проекта через терминал выполнить ``./gradlew connectedAndroidTest``
+В каталоге проекта через терминал, либо двойной CTRL в среде разработки Android Studio выполнить ``./gradlew connectedAndroidTest`` , при условии запущенного эмулятора.
 
 После прогона атотестов, отчет сформированный gradle будет доступен по пути - ``/[projectFolder]/app/build/reports/androidTests/connected/index.html``
 
