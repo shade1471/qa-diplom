@@ -7,7 +7,8 @@
 1. 7 тест кейсов проверки GUI.
 2. 18 тест кейсов на функциональность приложения.
 
-![Summary](https://user-images.githubusercontent.com/90593727/204001053-0b06e683-a73f-45ee-8178-97fb36418feb.png)
+![Summary](https://user-images.githubusercontent.com/90593727/204108330-a4d265d0-d4d6-4022-bc63-159e945e929c.png)
+
 
 **Проваленные тесты:**
 
