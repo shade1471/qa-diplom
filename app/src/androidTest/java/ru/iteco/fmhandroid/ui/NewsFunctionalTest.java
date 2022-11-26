@@ -78,7 +78,7 @@ public class NewsFunctionalTest {
     @Feature(value = "Набор тест кейсов по проверке функционала события типа Новости (Функциональное тестирование)")
     @Story("1.4.3 Удаление существующей новости")
     @Test
-    public void shouldDeleteNews() throws InterruptedException {
+    public void shouldDeleteNews() {
         String id = UUID.randomUUID().toString();
         String title = "Праздник " + id;
         NewsMainPage.clickEditAndPlus();

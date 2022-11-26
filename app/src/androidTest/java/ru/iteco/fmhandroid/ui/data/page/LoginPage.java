@@ -12,6 +12,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
 
+import static ru.iteco.fmhandroid.ui.data.customViewAction.TimeoutEspresso.onViewWithTimeout;
+
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.rule.ActivityTestRule;
 
@@ -19,19 +21,20 @@ import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.data.DataHelper;
+import ru.iteco.fmhandroid.ui.data.customViewAction.TimeoutEspresso;
 
 public class LoginPage {
-    public static ViewInteraction loginField = onView(withHint("Логин"));
-    public static ViewInteraction passwordField = onView(withHint("Пароль"));
-    public static ViewInteraction loginButton = onView(withId(R.id.enter_button));
-    public static ViewInteraction title = onView(withText("Авторизация"));
+    public static TimeoutEspresso.TimedViewInteraction loginField = onViewWithTimeout(withHint("Логин"));
+    public static TimeoutEspresso.TimedViewInteraction passwordField = onViewWithTimeout(withHint("Пароль"));
+    public static TimeoutEspresso.TimedViewInteraction loginButton = onViewWithTimeout(withId(R.id.enter_button));
+    public static TimeoutEspresso.TimedViewInteraction title = onViewWithTimeout(withText("Авторизация"));
 
     @Step("Авторизация под валидным пользователем - Иванов Д.Д.")
     public static void validLogIn() throws InterruptedException {
         DataHelper help = new DataHelper();
         LoginPage.loginField.perform(typeText(help.getValidUser().getLogin()), closeSoftKeyboard());
         LoginPage.passwordField.perform(typeText(help.getValidUser().getPassword()), closeSoftKeyboard());
-        Thread.sleep(3000);
+//        Thread.sleep(3000);
         LoginPage.loginButton.perform(click());
     }
 

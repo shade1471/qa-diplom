@@ -1,11 +1,18 @@
 package ru.iteco.fmhandroid.ui;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
+
+import static ru.iteco.fmhandroid.ui.data.customViewAction.CustomViewAction.needWait;
+import static ru.iteco.fmhandroid.ui.data.customViewAction.CustomViewAction.waitId;
+import static ru.iteco.fmhandroid.ui.data.customViewAction.TimeoutEspresso.onViewWithTimeout;
 
 import androidx.test.rule.ActivityTestRule;
 
@@ -14,10 +21,13 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.concurrent.TimeUnit;
+
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Feature;
 import io.qameta.allure.kotlin.Step;
 import io.qameta.allure.kotlin.Story;
+import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.data.DataHelper;
 import ru.iteco.fmhandroid.ui.data.page.LoginPage;
 import ru.iteco.fmhandroid.ui.data.page.MainPage;
@@ -34,7 +44,7 @@ public class LoginTest {
     @Before
     public void setUp() throws InterruptedException {
         try {
-            Thread.sleep(5000);
+            needWait(5000);
             LoginPage.title.check(matches(isDisplayed()));
         } catch (Exception e) {
             MainPage.logOut();
@@ -45,10 +55,10 @@ public class LoginTest {
     @Story("1.1.1 и 1.1.2 Авторизация в приложение под валидными учетными данными, проверка LogOut")
     @Test
     public void shouldLoginByValidUserAndExit() throws InterruptedException {
-//        Thread.sleep(5000);
         LoginPage.validLogIn();
-        Thread.sleep(5000);
+        needWait(5000);
         //Проверка главной страницы, лого и блоки Новости и Заявки
+
         MainPage.mainLogo.check(matches(isDisplayed()));
         MainPage.newsContainer.check(matches(isDisplayed()));
         MainPage.claimContainer.check(matches(isDisplayed()));
@@ -67,7 +77,7 @@ public class LoginTest {
         LoginPage.notValidLogIn();
         //Проверить toast message
         LoginPage.checkTextToastMessage("Неверный логин или пароль", activityTestRule);
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
         MainPage.mainLogo.check(matches(not(isDisplayed())));
         LoginPage.title.check(matches(isDisplayed()));
     }
