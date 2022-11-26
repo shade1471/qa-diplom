@@ -66,7 +66,7 @@ public class NewNewsPage {
     public static TimeoutEspresso.TimedViewInteraction cancelButton = onViewWithTimeout(withId(R.id.cancel_button));
     public static TimeoutEspresso.TimedViewInteraction okButtonMessage = onViewWithTimeout(withText("OK"));
     public static Matcher icon = withId(R.id.text_input_end_icon);
-    public static TimeoutEspresso.TimedViewInteraction newsRecyclerList = onViewWithTimeout(withId(R.id.news_list_recycler_view));
+    public static TimeoutEspresso.TimedViewInteraction newsRecyclerList = onViewWithTimeout(10000, withId(R.id.news_list_recycler_view));
 
 
     @Step("Создание новости")
@@ -80,11 +80,9 @@ public class NewNewsPage {
         time.perform(replaceText(help.getTimeNow()), closeSoftKeyboard());
         description.perform(replaceText("Задорно отметим"), closeSoftKeyboard());
         saveButton.perform(click());
-        //Thread.sleep(5000);
         newsRecyclerList.perform(RecyclerViewActions.actionOnItem(
                 hasDescendant(withText(newTitle)),
                 click()));
-        //Thread.sleep(4000);
     }
 
     @Step("Создание новости")
@@ -98,12 +96,11 @@ public class NewNewsPage {
         time.perform(replaceText(help.addMinToCurrentTime(minuteShift)), closeSoftKeyboard());
         description.perform(replaceText("Задорно отметим"), closeSoftKeyboard());
         saveButton.perform(click());
-        //Thread.sleep(5000);
-//        ViewInteraction myNews = onView(withId(R.id.news_list_recycler_view))
+        //        ViewInteraction myNews = onView(withId(R.id.news_list_recycler_view))
 //                .perform(RecyclerViewActions.actionOnItem(
 //                        hasDescendant(withText(newTitle)),
 //                        click()));
-//        Thread.sleep(4000);
+
     }
 
     @Step("Удаление новости")
@@ -113,9 +110,7 @@ public class NewNewsPage {
                 .perform(RecyclerViewActions.actionOnItem(
                         hasDescendant(withText(title)),
                         clickChildViewWithId(R.id.delete_news_item_image_view)));
-        //Thread.sleep(5000);
         okButtonMessage.perform(click());
-        //Thread.sleep(2000);
     }
 
     @Step("Редактирование новости: темы и описание")
@@ -128,9 +123,7 @@ public class NewNewsPage {
         //Правка темы и описания
         title.perform(replaceText(newTitle), closeSoftKeyboard());
         description.perform(replaceText(newDescription), closeSoftKeyboard());
-        //Thread.sleep(2000);
         saveButton.perform(click());
-        //Thread.sleep(5000);
     }
 
     @Step("Редактирование новости: сменить статус")
@@ -140,12 +133,8 @@ public class NewNewsPage {
                 .perform(RecyclerViewActions.actionOnItem(
                         hasDescendant(withText(title)),
                         clickChildViewWithId(R.id.edit_news_item_image_view)));
-        //Thread.sleep(4000);
         switcher.perform(click());
-        //Thread.sleep(1000);
         saveButton.perform(click());
-        //Thread.sleep(5000);
     }
-
 
 }

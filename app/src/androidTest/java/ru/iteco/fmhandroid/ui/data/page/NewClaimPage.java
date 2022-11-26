@@ -10,6 +10,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static ru.iteco.fmhandroid.ui.ClaimFunctionalTest.isPopupWindow;
+import static ru.iteco.fmhandroid.ui.data.customViewAction.CustomViewAction.needWait;
 import static ru.iteco.fmhandroid.ui.data.customViewAction.TimeoutEspresso.onViewWithTimeout;
 
 import androidx.test.espresso.ViewInteraction;
@@ -42,33 +43,30 @@ public class NewClaimPage {
 
 
     @Step("Создание новой полностью заполненной заявки и ее открытие")
-    public static void addNewClaimAndOpenIt() throws InterruptedException {
+    public static void addNewClaimAndOpenIt() {
         DataHelper help = new DataHelper();
         String id = UUID.randomUUID().toString();
         String finalTheme = "NewP " + id;
         //Создание и заполнение новой заявки
         ClaimMainPage.newClaim.perform(click());
-        //Thread.sleep(2000);
         theme.perform(replaceText(finalTheme), closeSoftKeyboard());
         executor.perform(click());
         executorIvanov.inRoot(isPopupWindow()).perform(click());
         date.perform(replaceText(help.getDateToday()), closeSoftKeyboard());
         time.perform(replaceText(help.getTimeNow()), closeSoftKeyboard());
         description.perform(replaceText("Срочно позвонить! Сроки подходят"), closeSoftKeyboard());
-        //Thread.sleep(2000);
-        saveButton.perform(scrollTo(), click());
-        //Thread.sleep(5000);
+        saveButton.perform(click());
         // Поиск заявки в списке по теме. Поиск по RecyclerView
         // https://stackoverflow.com/questions/31394569/how-to-assert-inside-a-recyclerview-in-espresso
-        claimRecyclerView
-                .perform(RecyclerViewActions.actionOnItem(
+        needWait(2000);
+        ClaimMainPage.claimListRecycler.perform(RecyclerViewActions.actionOnItem(
                         hasDescendant(withText(finalTheme)),
                         click()));
-        //Thread.sleep(2000);
+
     }
 
     @Step("Создание новой заявки без исполнителя")
-    public static void addNewOpenClaim() throws InterruptedException {
+    public static void addNewOpenClaim() {
         DataHelper help = new DataHelper();
         String id = UUID.randomUUID().toString();
         String finalTheme = "NewO " + id;
@@ -78,17 +76,13 @@ public class NewClaimPage {
         date.perform(replaceText(help.getDateToday()), closeSoftKeyboard());
         time.perform(replaceText(help.getTimeNow()), closeSoftKeyboard());
         description.perform(replaceText("Кому нибудь срочно позвонить! Сроки подходят!"), closeSoftKeyboard());
-        //Thread.sleep(3000);
         saveButton.perform(scrollTo(), click());
-        //Thread.sleep(5000);
         // Поиск заявки в списке, Поиск по RecyclerView
         // https://stackoverflow.com/questions/31394569/how-to-assert-inside-a-recyclerview-in-espresso
         claimRecyclerView
                 .perform(RecyclerViewActions.actionOnItem(
                         hasDescendant(withText(finalTheme)),
                         click()));
-        // Проверка статуса заявки при заполненном исполнителе
-        //Thread.sleep(1000);
     }
 
 }

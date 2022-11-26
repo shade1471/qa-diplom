@@ -43,10 +43,9 @@ public class CustomViewAction {
         };
     }
 
-    public static void returnBack() throws InterruptedException {
+    public static void returnBack() {
         //Нажатие Системной кнопки Back
         onView(isRoot()).perform(ViewActions.pressBack());
-        Thread.sleep(3000);
     }
 
     public static ViewAction waitFor(final long millis) {
@@ -68,7 +67,7 @@ public class CustomViewAction {
         };
     }
 
-    public static void needWait (final long millis) {
+    public static void needWait(final long millis) {
         onView(isRoot()).perform(waitFor(millis));
     }
 

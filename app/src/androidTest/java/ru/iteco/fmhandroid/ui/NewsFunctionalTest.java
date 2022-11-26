@@ -7,6 +7,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.hasSibling;
 import static androidx.test.espresso.matcher.ViewMatchers.isNotClickable;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.IsNot.not;
+import static ru.iteco.fmhandroid.ui.data.customViewAction.CustomViewAction.needWait;
 
 import androidx.test.rule.ActivityTestRule;
 
@@ -30,22 +31,21 @@ public class NewsFunctionalTest {
             new ActivityTestRule<>(AppActivity.class);
 
     @Before
-    public void setUp() throws InterruptedException {
+    public void setUp() {
         try {
-            Thread.sleep(7000);
+            needWait(5000);
             LoginPage.validLogIn();
-            Thread.sleep(10000);
+            needWait(9000);
             MainPage.openNewsPage();
         } catch (Exception e) {
             MainPage.openNewsPage();
-            Thread.sleep(7000);
         }
     }
 
     @Feature(value = "Набор тест кейсов по проверке функционала события типа Новости (Функциональное тестирование)")
     @Story("1.4.1 Создание новой новости (Happy Path)")
     @Test
-    public void shouldAddNews() throws InterruptedException {
+    public void shouldAddNews() {
         String id = UUID.randomUUID().toString();
         String newTitle = "Праздник " + id;
         NewsMainPage.clickEditAndPlus();
@@ -53,7 +53,6 @@ public class NewsFunctionalTest {
         //Проверка темы и что статус новости "АКТИВНА"
         NewsMainPage.newsListRecycler.check(matches(hasDescendant(withText(newTitle))));
         NewsMainPage.findNewsByTheme(newTitle).check(matches(hasSibling(withText("АКТИВНА"))));
-
     }
 
     @Feature(value = "Набор тест кейсов по проверке функционала события типа Новости (Функциональное тестирование)")
@@ -94,7 +93,7 @@ public class NewsFunctionalTest {
     @Feature(value = "Набор тест кейсов по проверке функционала события типа Новости (Функциональное тестирование)")
     @Story("1.4.4 Редактирование существующей новости")
     @Test
-    public void shouldEditNews() throws InterruptedException {
+    public void shouldEditNews() {
         String id = UUID.randomUUID().toString();
         String newId = UUID.randomUUID().toString();
         String title = "Праздник " + id;
@@ -113,7 +112,7 @@ public class NewsFunctionalTest {
     @Feature(value = "Набор тест кейсов по проверке функционала события типа Новости (Функциональное тестирование)")
     @Story("1.4.5 Смена статуса у новости с \"Активна\" на \"Не активна\"")
     @Test
-    public void shouldChangeNewsStatus() throws InterruptedException {
+    public void shouldChangeNewsStatus() {
         String id = UUID.randomUUID().toString();
         String title = "Праздник " + id;
         NewsMainPage.clickEditAndPlus();
@@ -129,7 +128,7 @@ public class NewsFunctionalTest {
     @Feature(value = "Набор тест кейсов по проверке функционала события типа Новости (Функциональное тестирование)")
     @Story("1.4.6 Функционал по дате публикации новости")
     @Test
-    public void shouldAddNewsForFutureTime() throws InterruptedException {
+    public void shouldAddNewsForFutureTime() {
         String id = UUID.randomUUID().toString();
         String title = "Будущее " + id;
         NewsMainPage.clickEditAndPlus();

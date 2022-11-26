@@ -9,6 +9,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import static ru.iteco.fmhandroid.ui.data.customViewAction.CustomViewAction.needWait;
 import static ru.iteco.fmhandroid.ui.data.customViewAction.TimeoutEspresso.onViewWithTimeout;
 
 import androidx.test.espresso.ViewInteraction;
@@ -39,18 +40,16 @@ public class ClaimPage {
     public static TimeoutEspresso.TimedViewInteraction okButtonMessage = onViewWithTimeout(withText("ОК"));
 
     @Step("Написание комментария в диалоговом окне")
-    public static void addTextDialogComment(String text) throws InterruptedException {
+    public static void addTextDialogComment(String text) {
         commentField.inRoot(isDialog()).perform(replaceText(text), closeSoftKeyboard());
         okButtonMessage.inRoot(isDialog()).perform(click());
-        //Thread.sleep(2000);
     }
 
     @Step("Написание комментария")
-    public static void addTextComment(String text) throws InterruptedException {
+    public static void addTextComment(String text) {
         commentField.perform(replaceText(text), closeSoftKeyboard());
+        needWait(2000);
         saveButton.perform(click());
-        //Thread.sleep(2000);
     }
-
 
 }

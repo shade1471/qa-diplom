@@ -22,7 +22,7 @@ import java.util.concurrent.TimeoutException;
 
 public class TimeoutEspresso {
 
-    private static final int SLEEP_IN_A_LOOP_TIME = 50;
+    private static final int SLEEP_IN_A_LOOP_TIME = 1000;
 
     private static final long DEFAULT_TIMEOUT_IN_MILLIS = 10 * 1000L;
 
@@ -40,7 +40,7 @@ public class TimeoutEspresso {
         do {
             try {
                 return new TimedViewInteraction(Espresso.onView(viewMatcher));
-            } catch (NoMatchingViewException ex) {
+            } catch (Exception ex) {
                 //ignore
             }
 

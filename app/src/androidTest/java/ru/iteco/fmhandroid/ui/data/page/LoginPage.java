@@ -11,10 +11,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
-
 import static ru.iteco.fmhandroid.ui.data.customViewAction.TimeoutEspresso.onViewWithTimeout;
 
-import androidx.test.espresso.ViewInteraction;
 import androidx.test.rule.ActivityTestRule;
 
 import io.qameta.allure.kotlin.Step;
@@ -30,11 +28,10 @@ public class LoginPage {
     public static TimeoutEspresso.TimedViewInteraction title = onViewWithTimeout(withText("Авторизация"));
 
     @Step("Авторизация под валидным пользователем - Иванов Д.Д.")
-    public static void validLogIn() throws InterruptedException {
+    public static void validLogIn() {
         DataHelper help = new DataHelper();
         LoginPage.loginField.perform(typeText(help.getValidUser().getLogin()), closeSoftKeyboard());
         LoginPage.passwordField.perform(typeText(help.getValidUser().getPassword()), closeSoftKeyboard());
-//        Thread.sleep(3000);
         LoginPage.loginButton.perform(click());
     }
 

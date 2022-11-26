@@ -1,13 +1,9 @@
 package ru.iteco.fmhandroid.ui.data.page;
 
-import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-
 import static ru.iteco.fmhandroid.ui.data.customViewAction.TimeoutEspresso.onViewWithTimeout;
-
-import androidx.test.espresso.ViewInteraction;
 
 import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.R;
@@ -19,7 +15,7 @@ public class NewsMainPage {
     public static TimeoutEspresso.TimedViewInteraction sort = onViewWithTimeout(withId(R.id.sort_news_material_button));
     public static TimeoutEspresso.TimedViewInteraction editNews = onViewWithTimeout(withId(R.id.edit_news_material_button));
     public static TimeoutEspresso.TimedViewInteraction addNews = onViewWithTimeout(withId(R.id.add_news_image_view));
-    public static TimeoutEspresso.TimedViewInteraction newsListRecycler = onViewWithTimeout(withId(R.id.news_list_recycler_view));
+    public static TimeoutEspresso.TimedViewInteraction newsListRecycler = onViewWithTimeout(10000, withId(R.id.news_list_recycler_view));
 
     @Step("Нажать кнопку редактировать и плюс")
     public static void clickEditAndPlus() {

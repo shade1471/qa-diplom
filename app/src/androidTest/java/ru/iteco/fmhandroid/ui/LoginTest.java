@@ -1,18 +1,9 @@
 package ru.iteco.fmhandroid.ui;
 
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
-
 import static ru.iteco.fmhandroid.ui.data.customViewAction.CustomViewAction.needWait;
-import static ru.iteco.fmhandroid.ui.data.customViewAction.CustomViewAction.waitId;
-import static ru.iteco.fmhandroid.ui.data.customViewAction.TimeoutEspresso.onViewWithTimeout;
 
 import androidx.test.rule.ActivityTestRule;
 
@@ -21,13 +12,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.concurrent.TimeUnit;
-
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Feature;
-import io.qameta.allure.kotlin.Step;
 import io.qameta.allure.kotlin.Story;
-import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.data.DataHelper;
 import ru.iteco.fmhandroid.ui.data.page.LoginPage;
 import ru.iteco.fmhandroid.ui.data.page.MainPage;
@@ -35,14 +22,13 @@ import ru.iteco.fmhandroid.ui.data.page.MainPage;
 @RunWith(AllureAndroidJUnit4.class)
 
 public class LoginTest {
-    DataHelper help = new DataHelper();
 
     @Rule
     public ActivityTestRule<AppActivity> activityTestRule =
             new ActivityTestRule<>(AppActivity.class);
 
     @Before
-    public void setUp() throws InterruptedException {
+    public void setUp() {
         try {
             needWait(5000);
             LoginPage.title.check(matches(isDisplayed()));
@@ -54,11 +40,10 @@ public class LoginTest {
     @Feature(value = "Набор тест кейсов по LogIn и LogOut из учетной записи")
     @Story("1.1.1 и 1.1.2 Авторизация в приложение под валидными учетными данными, проверка LogOut")
     @Test
-    public void shouldLoginByValidUserAndExit() throws InterruptedException {
+    public void shouldLoginByValidUserAndExit() {
         LoginPage.validLogIn();
-        needWait(5000);
+        needWait(8000);
         //Проверка главной страницы, лого и блоки Новости и Заявки
-
         MainPage.mainLogo.check(matches(isDisplayed()));
         MainPage.newsContainer.check(matches(isDisplayed()));
         MainPage.claimContainer.check(matches(isDisplayed()));
@@ -73,11 +58,11 @@ public class LoginTest {
     @Feature(value = "Набор тест кейсов по LogIn и LogOut из учетной записи")
     @Story("1.1.3 Авторизация в приложение под невалидными учетными данными")
     @Test
-    public void shouldLoginByNotValidUser() throws InterruptedException {
+    public void shouldLoginByNotValidUser() {
         LoginPage.notValidLogIn();
         //Проверить toast message
         LoginPage.checkTextToastMessage("Неверный логин или пароль", activityTestRule);
-//        Thread.sleep(2000);
+        //Проверка что остались на странице
         MainPage.mainLogo.check(matches(not(isDisplayed())));
         LoginPage.title.check(matches(isDisplayed()));
     }
