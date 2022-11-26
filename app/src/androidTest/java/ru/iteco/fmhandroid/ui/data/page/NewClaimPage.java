@@ -55,23 +55,13 @@ public class NewClaimPage {
         date.perform(replaceText(help.getDateToday()), closeSoftKeyboard());
         time.perform(replaceText(help.getTimeNow()), closeSoftKeyboard());
         description.perform(replaceText("Срочно позвонить! Сроки подходят"), closeSoftKeyboard());
+        needWait(2000);
         saveButton.perform(click());
         // Поиск заявки в списке по теме. Поиск по RecyclerView
         // https://stackoverflow.com/questions/31394569/how-to-assert-inside-a-recyclerview-in-espresso
-        needWait(5000);
-//                ClaimMainPage.claimListRecycler.perform(RecyclerViewActions.actionOnItem(
-//                        hasDescendant(withText(themeClaim)),click()));
-
-
-        onView(withId(R.id.claim_list_recycler_view))
-                .perform(RecyclerViewActions.actionOnItem(
-                        hasDescendant(withText(themeClaim)),
-                        click()));
-        needWait(2000);
-//        ClaimMainPage.claimListRecycler.perform(RecyclerViewActions.actionOnItem(
-//                        hasDescendant(withText(finalTheme)),
-//                        click()));
-
+        needWait(4000);
+        ClaimMainPage.claimListRecycler.perform(RecyclerViewActions.actionOnItem(
+                hasDescendant(withText(themeClaim)), click()));
     }
 
     @Step("Создание новой заявки без исполнителя")
@@ -85,10 +75,12 @@ public class NewClaimPage {
         date.perform(replaceText(help.getDateToday()), closeSoftKeyboard());
         time.perform(replaceText(help.getTimeNow()), closeSoftKeyboard());
         description.perform(replaceText("Кому нибудь срочно позвонить! Сроки подходят!"), closeSoftKeyboard());
+        needWait(2000);
         saveButton.perform(scrollTo(), click());
         // Поиск заявки в списке, Поиск по RecyclerView
         // https://stackoverflow.com/questions/31394569/how-to-assert-inside-a-recyclerview-in-espresso
-        claimRecyclerView
+        needWait(4000);
+        ClaimMainPage.claimListRecycler
                 .perform(RecyclerViewActions.actionOnItem(
                         hasDescendant(withText(finalTheme)),
                         click()));

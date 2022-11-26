@@ -138,6 +138,7 @@ public class ClaimFunctionalTest {
         ClaimPage.executorName.check(matches(withText("НЕ НАЗНАЧЕН")));
         ClaimPage.editButton.perform(click());
         NewClaimPage.theme.perform(replaceText(editTheme), closeSoftKeyboard());
+        needWait(1000);
         NewClaimPage.saveButton.perform(click());
         //Проверка, что тема была изменена
         ClaimPage.titleText.check(matches(withText(editTheme)));
@@ -214,7 +215,6 @@ public class ClaimFunctionalTest {
         String currentTimeForComment = help.getTimeNow();
         String currentDateForComment = help.getDateToday();
         ClaimPage.addTextComment(editComment);
-        needWait(2000);
         //Проверка автора комментария (авторизация под Ивановым Д.Д)
         ClaimPage.commentatorName.check(matches(withText("Иванов Данил Данилович")));
         //Проверка даты и времени исправленного комментария
