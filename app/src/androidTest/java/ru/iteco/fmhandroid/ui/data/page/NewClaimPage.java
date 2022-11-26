@@ -46,10 +46,10 @@ public class NewClaimPage {
     public static void addNewClaimAndOpenIt() {
         DataHelper help = new DataHelper();
         String id = UUID.randomUUID().toString();
-        String finalTheme = "NewP " + id;
+        String themeClaim = "NewP " + id;
         //Создание и заполнение новой заявки
         ClaimMainPage.newClaim.perform(click());
-        theme.perform(replaceText(finalTheme), closeSoftKeyboard());
+        theme.perform(replaceText(themeClaim), closeSoftKeyboard());
         executor.perform(click());
         executorIvanov.inRoot(isPopupWindow()).perform(click());
         date.perform(replaceText(help.getDateToday()), closeSoftKeyboard());
@@ -58,10 +58,19 @@ public class NewClaimPage {
         saveButton.perform(click());
         // Поиск заявки в списке по теме. Поиск по RecyclerView
         // https://stackoverflow.com/questions/31394569/how-to-assert-inside-a-recyclerview-in-espresso
-        needWait(2000);
-        ClaimMainPage.claimListRecycler.perform(RecyclerViewActions.actionOnItem(
-                        hasDescendant(withText(finalTheme)),
+        needWait(5000);
+//                ClaimMainPage.claimListRecycler.perform(RecyclerViewActions.actionOnItem(
+//                        hasDescendant(withText(themeClaim)),click()));
+
+
+        onView(withId(R.id.claim_list_recycler_view))
+                .perform(RecyclerViewActions.actionOnItem(
+                        hasDescendant(withText(themeClaim)),
                         click()));
+        needWait(2000);
+//        ClaimMainPage.claimListRecycler.perform(RecyclerViewActions.actionOnItem(
+//                        hasDescendant(withText(finalTheme)),
+//                        click()));
 
     }
 
