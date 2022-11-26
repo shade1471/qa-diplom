@@ -4,12 +4,18 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.intent.Intents.intended;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasData;
+import static androidx.test.espresso.matcher.ViewMatchers.hasContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
 import static ru.iteco.fmhandroid.ui.data.customViewAction.CustomViewAction.needWait;
+import static ru.iteco.fmhandroid.ui.data.customViewAction.TimeoutEspresso.onViewWithTimeout;
+import static ru.iteco.fmhandroid.ui.data.page.AboutPage.policyText;
+import static ru.iteco.fmhandroid.ui.data.page.AboutPage.termsOfUseText;
 
 import androidx.test.espresso.intent.Intents;
+import androidx.test.espresso.intent.VerificationMode;
 import androidx.test.rule.ActivityTestRule;
 
 import org.junit.After;
@@ -21,6 +27,7 @@ import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Feature;
 import io.qameta.allure.kotlin.Story;
+import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.data.page.AboutPage;
 import ru.iteco.fmhandroid.ui.data.page.ClaimMainPage;
 import ru.iteco.fmhandroid.ui.data.page.LoginPage;
@@ -108,13 +115,13 @@ public class PagesTest {
     @Test
     public void shouldCheckTermsUseLink() {
         MainPage.openAboutPage();
-
         Intents.init();
         AboutPage.termsUse.perform(click());
         intended(
                 hasData("https://vhospice.org/#/terms-of-use")
         );
         Intents.release();
+        termsOfUseText.check(matches(isDisplayed()));
     }
 
     @Feature(value = "Набор тест кейсов по проверке страниц через меню навигации приложения (GUI)")
@@ -126,7 +133,8 @@ public class PagesTest {
         AboutPage.privacyPolicy.perform(click());
         intended(
                 hasData("https://vhospice.org/#/privacy-policy")
-                );
+        );
         Intents.release();
+        policyText.check(matches(isDisplayed()));
     }
 }
