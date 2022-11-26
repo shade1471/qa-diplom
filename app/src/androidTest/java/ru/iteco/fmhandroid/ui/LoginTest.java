@@ -66,8 +66,7 @@ public class LoginTest {
     public void shouldLoginByNotValidUser() throws InterruptedException {
         LoginPage.notValidLogIn();
         //Проверить toast message
-        onView(withText("Неверный логин или пароль")).inRoot(withDecorView(not(activityTestRule
-                .getActivity().getWindow().getDecorView()))).check(matches(isDisplayed()));
+        LoginPage.checkTextToastMessage("Неверный логин или пароль", activityTestRule);
         Thread.sleep(2000);
         MainPage.mainLogo.check(matches(not(isDisplayed())));
         LoginPage.title.check(matches(isDisplayed()));

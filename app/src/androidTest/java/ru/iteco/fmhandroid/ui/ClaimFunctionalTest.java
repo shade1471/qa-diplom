@@ -1,6 +1,5 @@
 package ru.iteco.fmhandroid.ui;
 
-import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
@@ -10,13 +9,10 @@ import static androidx.test.espresso.matcher.RootMatchers.isPlatformPopup;
 import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isNotClickable;
-import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import androidx.test.espresso.Root;
-import androidx.test.espresso.action.ViewActions;
-import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.rule.ActivityTestRule;
 
 import org.hamcrest.Matcher;
@@ -32,6 +28,7 @@ import io.qameta.allure.kotlin.Feature;
 import io.qameta.allure.kotlin.Story;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.data.DataHelper;
+import ru.iteco.fmhandroid.ui.data.customViewAction.CustomViewAction;
 import ru.iteco.fmhandroid.ui.data.page.ClaimMainPage;
 import ru.iteco.fmhandroid.ui.data.page.ClaimPage;
 import ru.iteco.fmhandroid.ui.data.page.LoginPage;
@@ -69,6 +66,7 @@ public class ClaimFunctionalTest {
     @Test
     public void shouldCreateNewClaimWithExecutor() throws InterruptedException {
         NewClaimPage.addNewClaimAndOpenIt();
+        ClaimPage.statusLabel.check(matches(withText("В работе")));
     }
 
     @Feature(value = "Набор тест кейсов по проверке функционала события типа Заявка (Функциональное тестирование)")
@@ -106,15 +104,12 @@ public class ClaimFunctionalTest {
         ClaimMainPage.filteringByOpen();
         //Перебор 5-ти первых заявок
         for (int i = 0; i < 5; i++) {
-            onView(withId(R.id.claim_list_recycler_view))
-                    .perform(RecyclerViewActions.actionOnItemAtPosition(i, click()));
-            Thread.sleep(3000);
+            ClaimMainPage.openByIndex(i);
             //Проверка статуса и что исполнитель не назначен
             ClaimPage.statusLabel.check(matches(withText("Открыта")));
             ClaimPage.executorName.check(matches(withText("НЕ НАЗНАЧЕН")));
             //Нажатие Системной кнопки Back
-            onView(isRoot()).perform(ViewActions.pressBack());
-            Thread.sleep(3000);
+            CustomViewAction.returnBack();
         }
     }
 
@@ -125,14 +120,12 @@ public class ClaimFunctionalTest {
         ClaimMainPage.filteringByProgress();
         //Перебор 5-ти первых заявок
         for (int i = 0; i < 5; i++) {
-            onView(withId(R.id.claim_list_recycler_view))
-                    .perform(RecyclerViewActions.actionOnItemAtPosition(i, click()));
+            ClaimMainPage.openByIndex(i);
             Thread.sleep(3000);
             //Проверка статуса
             ClaimPage.statusLabel.check(matches(withText("В работе")));
             //Нажатие Системной кнопки Back
-            onView(isRoot()).perform(ViewActions.pressBack());
-            Thread.sleep(3000);
+            CustomViewAction.returnBack();
         }
     }
 
@@ -153,7 +146,7 @@ public class ClaimFunctionalTest {
         //Проверка, что тема была изменена
         ClaimPage.titleText.check(matches(withText(editTheme)));
         //Нажатие Системной кнопки Back
-        onView(isRoot()).perform(ViewActions.pressBack());
+        CustomViewAction.returnBack();
     }
 
     @Feature(value = "Набор тест кейсов по проверке функционала события типа Заявка (Функциональное тестирование)")

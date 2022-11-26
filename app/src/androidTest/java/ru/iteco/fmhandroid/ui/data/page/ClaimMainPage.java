@@ -6,6 +6,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.contrib.RecyclerViewActions;
 
 import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.R;
@@ -19,6 +20,7 @@ public class ClaimMainPage {
     public static ViewInteraction executedStatus = onView(withId(R.id.item_filter_executed));
     public static ViewInteraction canceledStatus = onView(withId(R.id.item_filter_cancelled));
     public static ViewInteraction okFilterClaim = onView(withId(R.id.claim_list_filter_ok_material_button));
+    public static int claimListRecycler = R.id.claim_list_recycler_view;
 
     @Step("Фильтрация заявки со статусом \"Открыта\"")
     public static void filteringByOpen() throws InterruptedException {
@@ -28,6 +30,7 @@ public class ClaimMainPage {
         okFilterClaim.perform(click());
         Thread.sleep(2000);
     }
+
     @Step("Фильтрация заявки со статусом \"В работе\"")
     public static void filteringByProgress() throws InterruptedException {
         ClaimMainPage.filter.perform(click());
@@ -37,6 +40,11 @@ public class ClaimMainPage {
         Thread.sleep(2000);
     }
 
+    public static void openByIndex(int i) throws InterruptedException {
+        onView(withId(claimListRecycler))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(i, click()));
+        Thread.sleep(3000);
+    }
 
 
 }

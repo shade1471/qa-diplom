@@ -63,6 +63,8 @@ public class NewNewsPage {
     public static ViewInteraction saveButton = onView(withId(R.id.save_button));
     public static ViewInteraction cancelButton = onView(withId(R.id.cancel_button));
     public static ViewInteraction okButtonMessage = onView(withText("OK"));
+    public static Matcher icon = withId(R.id.text_input_end_icon);
+
 
 
     @Step("Создание новости")
